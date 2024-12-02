@@ -1,0 +1,48 @@
+drop database if exists veterinario;
+create database if not exists veterinario;
+use veterinario;
+
+create table if not exists clientes(
+id_cliente int auto_increment primary key,
+nome varchar(100) not null,
+telefone varchar(20),
+email varchar(100) not null,
+endereco varchar(255)
+);
+
+create table if not exists animais(
+id_animal int auto_increment primary key,
+nome_animal varchar(100) not null,
+ especie varchar(100),
+ raca varchar(100),
+ data_nascimento date,
+ sexo enum('M','F')
+);
+
+create table if not exists veterinario (
+id_veterinario int auto_increment primary key,
+nome_veterinario varchar(100) not null,
+especialidade varchar(100),
+telefone_veterinario varchar(20),
+email_veterinario varchar(100)
+);
+
+create table if not exists consultas (
+id_consultas int auto_increment primary key,
+data_consulta datetime,
+diagnostico text
+);
+
+create table if not exists tratamentos (
+id_tratamento int auto_increment primary key,
+descricao text,
+medicamento varchar(100),
+dose varchar(20)
+);
+
+create table if not exists pagamentos (
+id_pagamento int auto_increment primary key,
+valor decimal(10, 2),
+data_pagamento date,
+metodo_pagamento enum('Dinheiro', 'Cartão', 'Transferencia', 'Pix')
+);
